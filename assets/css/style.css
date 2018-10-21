@@ -1,0 +1,13 @@
+.body {
+
+    font-style: normal;
+    font-family: 'Times New Roman', Times, serif;
+
+}
+
+
+#wins #loses #guessSoFar #guessLeft{
+
+    align-items: initial;
+
+}
