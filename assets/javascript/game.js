@@ -24,7 +24,7 @@ var playerAttempts;
 
 
     // Create additional variables to store increment, random index, and random array selection    
-    var i = 0;
+    // var i;
     var index = Math.floor(Math.random() * 27);
     var psyGuessKey = psyLetters[index]; 
 
@@ -37,14 +37,17 @@ var playerAttempts;
 
 
     // Initiating for-loop    
-    for (i = 0; i < 11; i++) {
+    for (var i = 0; i < 11; i++) {
+
+
+        console.log(i);
 
 
         // Function to get the onkeyup event, gather the player key entered, get elements by ID      
         document.onkeyup = function(event) {
 
         playerGuessKey = event.key;
-        playerAttempts++
+        playerAttempts++;
 
         
         playerWinDisplay = document.getElementById("wins");
@@ -85,7 +88,7 @@ var playerAttempts;
 
         }    
 
-    }    
+    }
 
 
 
