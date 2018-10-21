@@ -35,60 +35,84 @@ var playerAttempts;
     var playerGuessDisplay;
     var playerAttemptDisplay;
 
+    var keyCount = 0;
 
     // Initiating for-loop    
-    for (var i = 0; i < 11; i++) {
+    // for (var i = 0; i < 11; i++) {
 
 
-        console.log(i);
+        // console.log(i);
 
 
         // Function to get the onkeyup event, gather the player key entered, get elements by ID      
         document.onkeyup = function(event) {
 
-        playerGuessKey = event.key;
-        playerAttempts++;
+        if (keyCount>9) {
+            
+            playerWinDisplay.textContent = "Wins: ";
+            playerLoseDisplay.textContent = "Loses: ";
+            playerGuessDisplay.textContent = "Guesses Left: ";
+            playerAttemptDisplay.textContent = "Your Guesses So Far: ";
 
+            keyCount = 0;
+            playerWin = 0;
+            playerLose = 0;
+            playerGuess = 0 ;
+            playerAttempts = 0;
+
+            playerGuessKeyAppend = "";
+            
+            // return;
+
+            } else {
+
+                playerGuessKey = event.key;
+                playerAttempts++;
         
-        playerWinDisplay = document.getElementById("wins");
-        playerLoseDisplay = document.getElementById("loses");
-        playerGuessDisplay = document.getElementById("guessLeft");
-        playerAttemptDisplay = document.getElementById("guessSoFar");
-
-
-
-            // Compare the random variable and the onkeyup variable to see if they match
-            // if (playerGuessKey === "a") {           test
-            // if (playerGuessKey === psyGuessKey.includes(playerGuessKey)) {       test
-
-            if (playerGuessKey === psyGuessKey) {
-
-
-                playerWin++;
-                playerGuess++;
-
-
-            }   else{
-
-                playerLose++;
-                playerGuess++;
+                
+                playerWinDisplay = document.getElementById("wins");
+                playerLoseDisplay = document.getElementById("loses");
+                playerGuessDisplay = document.getElementById("guessLeft");
+                playerAttemptDisplay = document.getElementById("guessSoFar");
+        
+        
+        
+                    // Compare the random variable and the onkeyup variable to see if they match
+                    // if (playerGuessKey === "a") {           test
+                    // if (playerGuessKey === psyGuessKey.includes(playerGuessKey)) {       test
+        
+                    if (playerGuessKey === psyGuessKey) {
+        
+        
+                        playerWin++;
+                        playerGuess++;
+        
+        
+                    }   else{
+        
+                        playerLose++;
+                        playerGuess++;
+        
+                    }
+        
+                    // Player guess to append for display to the screen
+         
+                    playerGuessKeyAppend = playerGuessKeyAppend + " " + playerGuessKey;
+        
+                    // Display of values to the player
+                    playerWinDisplay.textContent = "Wins: " + playerWin;
+                    playerLoseDisplay.textContent = "Loses: " + playerLose;
+                    playerGuessDisplay.textContent = "Guesses Left: " + (10 - playerGuess);
+                    playerAttemptDisplay.textContent = "Your Guesses So Far: " + playerGuessKeyAppend;
+                    
+                    keyCount++;
+        
 
             }
 
-            // Player guess to append for display to the screen
- 
-            playerGuessKeyAppend = playerGuessKeyAppend + " " + playerGuessKey;
-
-            // Display of values to the player
-            playerWinDisplay.textContent = "Wins: " + playerWin;
-            playerLoseDisplay.textContent = "Loses: " + playerLose;
-            playerGuessDisplay.textContent = "Guesses Left: " + (10 - playerGuess);
-            playerAttemptDisplay.textContent = "Your Guesses So Far: " + playerGuessKeyAppend;
-            
-
         }    
 
-    }
+    // }
 
 
 
