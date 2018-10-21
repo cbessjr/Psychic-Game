@@ -11,57 +11,58 @@ var playerLose = 0;
 var playerGuess = 0;
 var playerAttempts;
 
-//getelementid had been here but was coming up undefined. Ask question why this had to be moved. Possibly the scope....
 
 // Create array of letters 
 
  var psyLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m",
  "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
-
-//User guess by key press
-
-// Random select a letter from the array and store to variable called psyGuess
-
-// document.onkeyup = function(event) {
-
-    
-
+   
+    // Create additional variables to store key events
     var playerGuessKey;
     var playerGuessKeyAppend = "";
+
+
+    // Create additional variables to store increment, random index, and random array selection    
     var i = 0;
     var index = Math.floor(Math.random() * 27);
     var psyGuessKey = psyLetters[index]; 
 
-    var playerWinDisplay = document.getElementById("wins");
-    var playerLoseDisplay = document.getElementById("loses");
-    var playerGuessDisplay = document.getElementById("guessLeft");
-    var playerAttemptDisplay = document.getElementById("guessSoFar");
+    
+    // Create variables to assign to ids to write to the screen 
+    var playerWinDisplay;
+    var playerLoseDisplay;
+    var playerGuessDisplay;
+    var playerAttemptDisplay;
 
+
+    // Initiating for-loop    
     for (i = 0; i < 11; i++) {
 
+
+        // Function to get the onkeyup event, gather the player key entered, get elements by ID      
         document.onkeyup = function(event) {
 
         playerGuessKey = event.key;
         playerAttempts++
 
         
-    
+        playerWinDisplay = document.getElementById("wins");
+        playerLoseDisplay = document.getElementById("loses");
+        playerGuessDisplay = document.getElementById("guessLeft");
+        playerAttemptDisplay = document.getElementById("guessSoFar");
 
 
-        // var psyGuessKey = psyLetters[Math.floor(Math.random() * 27)];        
 
-
-        // Compare the random variable and the .onclick variable to see if they match
-            // if (playerGuessKey === "a") {
+            // Compare the random variable and the onkeyup variable to see if they match
+            // if (playerGuessKey === "a") {           test
+            // if (playerGuessKey === psyGuessKey.includes(playerGuessKey)) {       test
 
             if (playerGuessKey === psyGuessKey) {
 
-            // if (playerGuessKey === psyGuessKey.includes(playerGuessKey)) {
 
                 playerWin++;
                 playerGuess++;
-                // playerWinDisplay.textContent = playerWin;
 
 
             }   else{
@@ -71,26 +72,23 @@ var playerAttempts;
 
             }
 
+            // Player guess to append for display to the screen
+ 
             playerGuessKeyAppend = playerGuessKeyAppend + " " + playerGuessKey;
 
+            // Display of values to the player
             playerWinDisplay.textContent = "Wins: " + playerWin;
             playerLoseDisplay.textContent = "Loses: " + playerLose;
             playerGuessDisplay.textContent = "Guesses Left: " + (10 - playerGuess);
             playerAttemptDisplay.textContent = "Your Guesses So Far: " + playerGuessKeyAppend;
             
 
-
+        }    
 
     }    
 
 
-// }
 
 
 
 
-// Listen for the .onclick from the user and store the entry to variable
-// The variable will need to be displayed 
-
-
-// Display an alert for the user win or loss

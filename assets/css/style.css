@@ -4,7 +4,11 @@
     font-family: 'Times New Roman', Times, serif;
 
 } */
+.h1 {
 
+    font-size: 24pt;
+
+}
 
 #wins #loses #guessSoFar #guessLeft{
 
