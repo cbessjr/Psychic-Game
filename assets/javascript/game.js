@@ -11,12 +11,7 @@ var playerLose = 0;
 var playerGuess = 0;
 var playerAttempts;
 
-//
-
-var playerWinDisplay = document.getElementById("wins");
-var playerLoseDisplay = document.getElementById("loses");
-var playerGuessDisplay = document.getElementById("guessleft");
-var playerAttemptDisplay = document.getElementById("guessSoFar");
+//getelementid had been here but was coming up undefined. Ask question why this had to be moved. Possibly the scope....
 
 // Create array of letters 
 
@@ -28,61 +23,74 @@ var playerAttemptDisplay = document.getElementById("guessSoFar");
 
 // Random select a letter from the array and store to variable called psyGuess
 
-document.onkeyup = function(event) {
+// document.onkeyup = function(event) {
 
+    
+
+    var playerGuessKey;
     var playerGuessKeyAppend = "";
+    var i = 0;
+    var index = Math.floor(Math.random() * 27);
+    var psyGuessKey = psyLetters[index]; 
 
-    for (playerAttempts = 0; playerAttempts <= 10; playerAttempts++) {
+    var playerWinDisplay = document.getElementById("wins");
+    var playerLoseDisplay = document.getElementById("loses");
+    var playerGuessDisplay = document.getElementById("guessLeft");
+    var playerAttemptDisplay = document.getElementById("guessSoFar");
 
-        var playerGuessKey = event.key;
-        var index = Math.floor(Math.random() * 27);
-        var psyGuessKey = psyLetters[index];                                           // did not need .valueof. This was breaking the code.
+    for (i = 0; i < 11; i++) {
 
-        // var psyGuessKey = psyLetters[Math.floor(Math.random() * 27)];               //This did not work when implemented WHY?????  //Found the issue. Was using math.random(math.random)...wrong syntax!!!!  Still did not work!!!
+        document.onkeyup = function(event) {
+
+        playerGuessKey = event.key;
+        playerAttempts++
+
+        
+    
 
 
+        // var psyGuessKey = psyLetters[Math.floor(Math.random() * 27)];        
 
-        // console.log(playerAttempts);
 
+        // Compare the random variable and the .onclick variable to see if they match
             // if (playerGuessKey === "a") {
 
             if (playerGuessKey === psyGuessKey) {
 
             // if (playerGuessKey === psyGuessKey.includes(playerGuessKey)) {
 
-                alert("You Won");
                 playerWin++;
                 playerGuess++;
-                playerWinDisplay.textContent = playerWin;
+                // playerWinDisplay.textContent = playerWin;
 
 
             }   else{
 
-                alert("You Lost");
                 playerLose++;
                 playerGuess++;
 
             }
 
-            playerGuessKeyAppend = playerGuessKey.valueOf + " " + playerGuessKey.valueOf
+            playerGuessKeyAppend = playerGuessKeyAppend + " " + playerGuessKey;
 
-            // playerWinDisplay.textContent = "Wins: " + playerWin;
+            playerWinDisplay.textContent = "Wins: " + playerWin;
             playerLoseDisplay.textContent = "Loses: " + playerLose;
             playerGuessDisplay.textContent = "Guesses Left: " + (10 - playerGuess);
-            playerAttemptDisplay.textContent = "Your Guesses SO Far: " + playerGuessKeyAppend;
+            playerAttemptDisplay.textContent = "Your Guesses So Far: " + playerGuessKeyAppend;
             
-            
+
+
 
     }    
 
 
-}
+// }
+
 
 
 
 // Listen for the .onclick from the user and store the entry to variable
 // The variable will need to be displayed 
 
-// Compare the random variable and the .onclick variable to see if they match
 
 // Display an alert for the user win or loss
