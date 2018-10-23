@@ -47,16 +47,17 @@ var playerAttempts;
         // Function to get the onkeyup event, gather the player key entered, get elements by ID      
         document.onkeyup = function(event) {
 
-        if (keyCount>9) {
+        if ((keyCount>9) && (playerGuessKey != psyGuessKey)) {
             
-            playerWinDisplay.textContent = "Wins: ";
-            playerLoseDisplay.textContent = "Loses: ";
+            // playerWinDisplay.textContent = "Wins: ";
+            // playerLoseDisplay.textContent = "Loses: ";
             playerGuessDisplay.textContent = "Guesses Left: ";
             playerAttemptDisplay.textContent = "Your Guesses So Far: ";
 
+            playerLose++;
             keyCount = 0;
-            playerWin = 0;
-            playerLose = 0;
+            // playerWin = 0;
+            // playerLose = 0;
             playerGuess = 0 ;
             playerAttempts = 0;
 
@@ -85,12 +86,11 @@ var playerAttempts;
         
         
                         playerWin++;
-                        playerGuess++;
-        
+                        playerGuess=0;
+                        playerGuessKeyAppend="";
         
                     }   else{
         
-                        playerLose++;
                         playerGuess++;
         
                     }
